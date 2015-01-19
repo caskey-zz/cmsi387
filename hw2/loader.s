@@ -6,6 +6,8 @@ FLAGS equ FL_ALIGN | FL_MEMINFO
 CHECKSUM equ -(MAGIC_NUMBER + FLAGS)
 KERNEL_STACK_SIZE equ 4096
 
+extern sum_of_three
+
 section .text
 align 4
   dd MAGIC_NUMBER
@@ -13,10 +15,13 @@ align 4
   dd CHECKSUM
 
 loader:
-  mov eax, 0xCAFEBABE
-
-.loop:
   mov esp, kernel_stack + KERNEL_STACK_SIZE
+  push dword 3
+  push dword 2
+  push dword 1
+  call sum_of_three
+  ; result will now be in eax
+.loop:
   jmp .loop
 
 section .bss
