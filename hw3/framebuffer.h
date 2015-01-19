@@ -26,8 +26,12 @@
 #define FB_COMMAND_PORT 0x3D4
 #define FB_DATA_PORT 0x3D5
 
+void fb_init();
 void fb_move_cursor(unsigned char row, unsigned char col);
 void fb_write_cell(unsigned char row, unsigned char col, char c,
                    unsigned char fg_color, unsigned char bg_color);
+
+void clear_screen();
+void write_text(const char *buffer, const int length);
 
 #endif // INCLUDE_FRAMEBUFFER_H

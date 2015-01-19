@@ -8,6 +8,7 @@ CHECKSUM equ -(MAGIC_NUMBER + FLAGS)
 KERNEL_STACK_SIZE equ 4096
 
 extern sum_of_three
+extern kmain
 global outb
 
 section .text
@@ -46,6 +47,7 @@ loader:
 
   call sum_of_three
   ; result will now be in eax
+  call kmain
 
   ; And here a little infinite loop
 .loop:
