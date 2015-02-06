@@ -1,3 +1,6 @@
+os.iso
+bochslog.txt
+*.ss
 # Object files
 *.o
 *.ko

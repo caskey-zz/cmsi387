@@ -20,12 +20,6 @@
 #define FB_COMMAND_PORT 0x3D4
 #define FB_DATA_PORT 0x3D5
 
-#define FB_CMD_CURSOR_HIGH_BYTE 14
-#define FB_CMD_CURSOR_LOW_BYTE 15
-
-#define FB_COMMAND_PORT 0x3D4
-#define FB_DATA_PORT 0x3D5
-
 void fb_init();
 void fb_move_cursor(unsigned char row, unsigned char col);
 void fb_write_cell(unsigned char row, unsigned char col, char c,

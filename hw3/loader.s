@@ -7,7 +7,6 @@ FLAGS equ FL_ALIGN | FL_MEMINFO
 CHECKSUM equ -(MAGIC_NUMBER + FLAGS)
 KERNEL_STACK_SIZE equ 4096
 
-extern sum_of_three
 extern kmain
 global outb
 
@@ -45,9 +44,21 @@ loader:
   push dword 1
   mov word [0x000B8002], 0x2841
 
-  call sum_of_three
-  ; result will now be in eax
   call kmain
+
+  ; This was a lame attempt at triggering the acpi shutdown, but you just
+  ; get an infinite bochs restart loop.
+  mov ax, 0x5301
+  xor bx, bx
+  int 15
+  mov ax, 0x530e
+  xor bx, bx
+  mov cx, 0x0102
+  int 15
+  mov ax, 0x5307
+  mov bx, 0x0001
+  mov cx, 0x0003
+  int 15
 
   ; And here a little infinite loop
 .loop:
