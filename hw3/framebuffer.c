@@ -78,7 +78,7 @@ void scroll_framebuffer() {
   }
 }
 
-void write_text(const char *buffer, const int length) {
+void fb_write_text(const char *buffer, const int length) {
   int i;
   for (i = 0; i < length; ++i) {
     fb_write_cell(fb_state.row, fb_state.col, buffer[i],

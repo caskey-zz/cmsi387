@@ -26,6 +26,6 @@ void fb_write_cell(unsigned char row, unsigned char col, char c,
                    unsigned char fg_color, unsigned char bg_color);
 
 void clear_screen();
-void write_text(const char *buffer, const int length);
+void fb_write_text(const char *buffer, const int length);
 
 #endif // INCLUDE_FRAMEBUFFER_H
